@@ -47,9 +47,35 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-Шаг 4: Запуск теста
+Шаг 4: Настройка переменных окружения
 
-Теперь вы можете запустить e2e тест с помощью следующей команды:
+Перед запуском теста нужно настроить переменные окружения. Для этого создайте файл .env в корневой директории проекта.
+```bash
+    Создайте файл .env в корневом каталоге проекта.
+    Добавьте в файл .env следующие переменные:
+GITHUB_USERNAME=your_github_username
+GITHUB_TOKEN=your_github_token
+REPO_NAME=test-repo
+
+```
+GITHUB_USERNAME — ваше имя пользователя GitHub.
+GITHUB_TOKEN — ваш токен доступа.
+REPO_NAME — имя репозитория, который будет создан для теста.
+GitHub Token (токен доступа) используется для аутентификации через GitHub API. Для его получения:
+
+    Перейдите в GitHub Settings.
+    Выберите Developer settings в левой боковой панели.
+    Перейдите в Personal access tokens.
+    Нажмите на Generate new token. Не забудьте включить права repo и delete_repo.
+Пример :
+GITHUB_USERNAME=Denis
+GITHUB_TOKEN=ghp_1234567890abcdef
+REPO_NAME=test-repo
+
+Шаг 5: Запуск теста
+
+Теперь вы можете запустить тест с помощью следующей команды:
 ```bash
 python test_api.py
 ```
+Если всё настроено правильно, скрипт создаст репозиторий на GitHub, проверит его наличие и удалит его.
